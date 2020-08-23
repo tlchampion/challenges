@@ -1,7 +1,7 @@
 
 
 def main():
-    number = int(input("Please enter and integer"))
+    number = int(input("Please enter an integer"))
 
     print(solution(number))
 
