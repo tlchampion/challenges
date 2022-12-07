@@ -1,0 +1,31 @@
+"""
+Given two integer arrays nums1 and nums2, return an array of their intersection. Each element in the result must appear as many times as it shows in both arrays and you may return the result in any order.
+"""
+
+from collections import defaultdict
+
+
+def intersect(nums1: list[int], nums2: list[int]) -> list[int]:
+    if len(nums1) > len(nums2):
+        l1 = nums2
+        l2 = nums1
+    else:
+        l1 = nums1
+        l2 = nums2
+
+    hashed = defaultdict(int)
+    for i in l1:
+
+        hashed[i] += 1
+
+    result = []
+    for j in l2:
+        if j in hashed:
+            if hashed[j] > 0:
+                result.append(j)
+                hashed[j] -= 1
+
+    return result
+
+
+intersect([1, 2, 3, 4, 4, 6], [4, 4, 4, 4])
